@@ -164,9 +164,6 @@
             (define eval-result (eval-expr char-list history)) ; Call eval function, passes char list and current history
             ; Eval function returns two element list containing result and leftover chars
 
-            ; TEMP Test
-            (displayln eval-result)
-
             (define result-val (first eval-result)) ; Extract first element from returned list (numerical result or #f is failed)
             (define remaining-chars (second eval-result)) ; Extract remaining chars
 
@@ -182,10 +179,19 @@
                     (eval-loop history history-id)] ; Recursion calls for error state, invalid expression doesn't modify history
                 
                 [else ; Sucess branch, triggers only if valid result AND no remaining chars
+                    ; Final formatting
+                    (display (number->string history-id)) ; Print ID without leading zeros
+                    (display ": ")
+                    (display (real->double-flonum result-val)) ; Convert to float
+                    (displayln "") ; Add a newline after the result
+                    
+                    ; 'cons' the new result onto the front of the history list
+                    ; Increment the history-id by 1.
+                    (eval-loop (cons result-val history) (+ history-id 1))])]
                 
                 (displayln "Evlatuation successful! (Placeholder)") ; Temp placeholder text
                 
-                (eval-loop history history-id)])])) ; Recursive call
+                (eval-loop history history-id)])]))) ; Recursive call
 
 ;Starts program for first time, pass empty list and 1 for initial params
 (eval-loop '() 1)

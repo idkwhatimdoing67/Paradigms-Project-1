@@ -50,3 +50,12 @@ At least it kind of worked.
 5:30 PM
 I feel both smart and dumb, easy mistake but one I fixed earlier, the windows whitespace issue from before.
 Need to remember all input needs to be (strim-trim input)
+
+Successful test:
+PS C:\Users\colin\OneDrive\Documents\GitHub\Paradigms-Project-1> racket main.rkt
+> + 10 5
+(15 ())
+
+
+5:45PM
+Final piece is just adding in the full success branch output logic and testing.  Currently facing some indentation bug but hopefully I can find it.
