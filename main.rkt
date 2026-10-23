@@ -32,7 +32,13 @@
     ; Return list
     [(empty? chars) (list (string->number (list->string (reverse acc-chars))) '())]
 
-    ; If next char is numeric, add
+    ; If next char is numeric, add it to accumulator (acc-chars)
+    ; 'cons' adds to front, needs to be reversed
+    [(char-numeric? (first chars)) (parse-number (rest chars) (cons (first chars) acc-chars))]
+
+    ; If non-number, stop accumulating
+    [else
+        (list (string->number (list->string (reverse acc-chars))) chars)]))
 
 
 
