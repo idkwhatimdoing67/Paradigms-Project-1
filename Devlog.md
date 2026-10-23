@@ -33,3 +33,7 @@ Number parser is first.  Then history lookup.
 
 These are built out so now we need to dive back into that main eval logic and go through the calc functionality.
 Big part will be (i think) just going through the first conditional block and adding the actual math stuff like +,-,*,/
+
+5:00 PM
+Accumulator instantiated and history lookup written for loop.  Now to add the math pieces
+Math pieces currently added, added a test line to check them out.

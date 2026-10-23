@@ -68,7 +68,7 @@
     [(char-numeric? (first chars)) (parse-number chars '())] ; Start with empty accumulator
 
     ; History lookup
-    [(char=? (first chars) #/$)
+    [(char=? (first chars) #/$) ; Eval first char as $
     ; Let* allows for defining local vars sequentially and using prior results
         (let* ([num-result (parse-number (rest chars) '())] ; Parse the ID following the '$'
             [id-val (first num-result)]                     ; The parsed integer ID.
@@ -79,10 +79,65 @@
                 (list #f rem-chars)))] ; Fail if no valid num attached to $
 
     ; Minus (-)
+    [(char=? (first chars) #\-) ; Evaluate first char as -
+     (let* ([operand-result (eval-expr (rest chars) history)] ; Recursively evaluate the next token
+            [op-val (first operand-result)]
+            [rem-chars (second operand-result)])
+       
+       (if op-val
+           (list (- op-val) rem-chars) ; Negate the valid value
+           (list #f rem-chars)))] ; Fail if the operand evaluation failed.
+
+    ; Addition (+)
+    [(char=? (first chars) #\+)
+     (let* ([left-res (eval-expr (rest chars) history)] ; Evaluate the left operand
+            [left-val (first left-res)]
+            [left-rem (second left-res)]) ; Leftovers after left operand is parsed.
+       
+       (if (not left-val)
+           (list #f left-rem) ; Fail early if left operand is invalid.
+           
+           (let* ([right-res (eval-expr left-rem history)] ; Evaluate right operand using left's leftovers
+                  [right-val (first right-res)]
+                  [right-rem (second right-res)])
+             
+             (if (not right-val)
+                 (list #f right-rem)
+                 (list (+ left-val right-val) right-rem)))))] ; Add values and return right's leftovers
     
+    ; Multiplication (*)
+    [(char=? (first chars) #\*) ; Same code as addition just swapped symbol
+     (let* ([left-res (eval-expr (rest chars) history)]
+            [left-val (first left-res)]
+            [left-rem (second left-res)])
+       (if (not left-val)
+           (list #f left-rem)
+           (let* ([right-res (eval-expr left-rem history)]
+                  [right-val (first right-res)]
+                  [right-rem (second right-res)])
+             (if (not right-val)
+                 (list #f right-rem)
+                 (list (* left-val right-val) right-rem)))))]
+    
+    ; Division (/)
+    [(char=? (first chars) #\/) ; Same code as * just new symbol
+     (let* ([left-res (eval-expr (rest chars) history)]
+            [left-val (first left-res)]
+            [left-rem (second left-res)])
+       (if (not left-val)
+           (list #f left-rem)
+           (let* ([right-res (eval-expr left-rem history)]
+                  [right-val (first right-res)]
+                  [right-rem (second right-res)])
 
+             ; Unique code here for zero checking     
+             (if (not right-val)
+                 (list #f right-rem)
+                 (if (= right-val 0)
+                     (list #f right-rem) ; Trigger an error if right operand is 0
+                     (list (quotient left-val right-val) right-rem))))))] 
 
-    ; Currently return false for non whitespace/empty lists.  Temp build
+    ; If nothing else return fail
     [else (list #f chars)]))
 
 
@@ -108,6 +163,9 @@
 
             (define eval-result (eval-expr char-list history)) ; Call eval function, passes char list and current history
             ; Eval function returns two element list containing result and leftover chars
+
+            ; TEMP Test
+            (displayln eval-result)
 
             (define result-val (first eval-result)) ; Extract first element from returned list (numerical result or #f is failed)
             (define remaining-chars (second eval-result)) ; Extract remaining chars
