@@ -68,7 +68,7 @@
     [(char-numeric? (first chars)) (parse-number chars '())] ; Start with empty accumulator
 
     ; History lookup
-    [(char=? (first chars) #/$) ; Eval first char as $
+    [(char=? (first chars) #\$) ; Eval first char as $
     ; Let* allows for defining local vars sequentially and using prior results
         (let* ([num-result (parse-number (rest chars) '())] ; Parse the ID following the '$'
             [id-val (first num-result)]                     ; The parsed integer ID.
@@ -159,7 +159,7 @@
 
         [else ;Condition for all other inputs
 
-            (define char-list (string->list input)) ; Converts input to a list of characters, easier to parse
+            (define char-list (string->list (string-trim input))) ; Converts input to a list of characters, easier to parse
 
             (define eval-result (eval-expr char-list history)) ; Call eval function, passes char list and current history
             ; Eval function returns two element list containing result and leftover chars

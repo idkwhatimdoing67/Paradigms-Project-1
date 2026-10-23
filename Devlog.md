@@ -37,3 +37,16 @@ Big part will be (i think) just going through the first conditional block and ad
 5:00 PM
 Accumulator instantiated and history lookup written for loop.  Now to add the math pieces
 Math pieces currently added, added a test line to check them out.
+Test failed, had wrong slash / instead of \
+
+New test got this output
+PS C:\Users\colin\OneDrive\Documents\GitHub\Paradigms-Project-1> racket main.rkt
+> + 10 5
+))5 (
+Error: Invalid Expression
+
+At least it kind of worked.
+
+5:30 PM
+I feel both smart and dumb, easy mistake but one I fixed earlier, the windows whitespace issue from before.
+Need to remember all input needs to be (strim-trim input)
