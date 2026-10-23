@@ -15,3 +15,6 @@ PS C:\Users\colin\OneDrive\Documents\GitHub\Paradigms-Project-1> racket main.rkt
 Nuh uh
 
 The extensive commenting is helping with conceptualizing the lang better so I'm going to continue with that for the next blocks.
+
+3:00 PM
+Getting started on the while loop, wrote first "if" statement in racket to call the first config method.  Thankfully it's becoming a bit more intuitive now.

@@ -22,7 +22,10 @@
             ; Else, return true (#t)
             [else #t])))
 
-; Test block for prompt
-(if prompt?
-    (displayln "Prompt ON") ; If true
-    (displayln "Nuh uh")) ; If false
+; Defines main loop function, takes two params
+; 'history' (list of past results) & 'history-id' (counter)
+(define (eval-loop history history-id)
+
+    ; 'when' is an if statement, if prompt is true then we execute this when
+    (when prompt?
+        (display "> ")) ;Prints prompt indicator without newline
