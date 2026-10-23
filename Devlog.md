@@ -29,4 +29,6 @@ A lot of this has been just trying to put together the branch logic and figure o
 4:20 PM
 Beginning to fill our main eval function.  Going to add in helpers to parse and lookup history first.
 
-Number parser is first.
+Number parser is first.  Then history lookup.
+
+These are built out so now we need to dive back into that main eval logic and go through the calc functionality.

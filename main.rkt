@@ -40,6 +40,16 @@
     [else
         (list (string->number (list->string (reverse acc-chars))) chars)]))
 
+; History lookup helper
+(define (get-history-val id history)
+    ; Reverse history since cons will build backwards
+    (let ([rev-history (reverse history)])
+
+    ; Check if requested id exists (between 1 and list len)
+    (if (and (>= id 1) (<= id (length rev-history)))
+        ; If ID is invalid return #f (false)
+        (list-ref rev-history (- id 1)) #f))) ; Subtract for 0-based index
+
 
 
 
