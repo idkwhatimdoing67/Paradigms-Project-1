@@ -19,3 +19,4 @@ The extensive commenting is helping with conceptualizing the lang better so I'm 
 3:00 PM
 Getting started on the while loop, wrote first "if" statement in racket to call the first config method.  Thankfully it's becoming a bit more intuitive now.
 Tested the loop by having it output my inputs.  Everything went well until trying to quit.  Need to explore that.
+Windows whitespace strikes again, adjusted the quite cmd to trim whitespace and it worked.
