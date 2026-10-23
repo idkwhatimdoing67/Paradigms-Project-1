@@ -187,11 +187,7 @@
                     
                     ; 'cons' the new result onto the front of the history list
                     ; Increment the history-id by 1.
-                    (eval-loop (cons result-val history) (+ history-id 1))])]
-                
-                (displayln "Evlatuation successful! (Placeholder)") ; Temp placeholder text
-                
-                (eval-loop history history-id)])]))) ; Recursive call
+                    (eval-loop (cons result-val history) (+ history-id 1))])]))
 
 ;Starts program for first time, pass empty list and 1 for initial params
 (eval-loop '() 1)

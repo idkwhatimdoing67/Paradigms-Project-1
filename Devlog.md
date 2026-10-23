@@ -59,3 +59,19 @@ PS C:\Users\colin\OneDrive\Documents\GitHub\Paradigms-Project-1> racket main.rkt
 
 5:45PM
 Final piece is just adding in the full success branch output logic and testing.  Currently facing some indentation bug but hopefully I can find it.
+
+Forgot when I added in the new else logic I left the old placeholder stuff in.  Also I really hate Racket's parenthesis stuff.  Terrible to write with on vscode.
+
+Good final test:
+PS C:\Users\colin\OneDrive\Documents\GitHub\Paradigms-Project-1> racket main.rkt
+> + 10 5
+1: 15.0
+> * 2 $1
+2: 30.0
+> - $2
+3: -30.0
+> / 10 0
+Error: Invalid Expression
+> + 1 2 3
+Error: Invalid Expression
+> quit
