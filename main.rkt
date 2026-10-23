@@ -22,6 +22,21 @@
             ; Else, return true (#t)
             [else #t])))
 
+
+; Number Parser, helper to Eval Function
+; Consumes numeric chars, build list of digits
+(define (parse-number chars acc-chars)
+    (cond
+    ; If list is empty, end of input
+    ; Reverse digits, convert to string then to num
+    ; Return list
+    [(empty? chars) (list (string->number (list->string (reverse acc-chars))) '())]
+
+    ; If next char is numeric, add
+
+
+
+
 ; Eval function, takes two params
 ; 'chars' (remaining list to parse), 'history' (list of previous results)
 ; Returns two elem list

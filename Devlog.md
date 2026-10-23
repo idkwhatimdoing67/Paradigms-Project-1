@@ -26,3 +26,7 @@ New temp build set up for the loop and evaluation method.  I've set up basic con
 
 A lot of this has been just trying to put together the branch logic and figure out where we branch.  Like skeleton code I suppose where rather than try to get every litte detail in one area I'm trying to just set up where the pathes will go before writing said pathes.
 
+4:20 PM
+Beginning to fill our main eval function.  Going to add in helpers to parse and lookup history first.
+
+Number parser is first.
