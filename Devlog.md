@@ -20,3 +20,9 @@ The extensive commenting is helping with conceptualizing the lang better so I'm 
 Getting started on the while loop, wrote first "if" statement in racket to call the first config method.  Thankfully it's becoming a bit more intuitive now.
 Tested the loop by having it output my inputs.  Everything went well until trying to quit.  Need to explore that.
 Windows whitespace strikes again, adjusted the quite cmd to trim whitespace and it worked.
+
+4:15 PM
+New temp build set up for the loop and evaluation method.  I've set up basic conditions such as checking a list for empty characters and whitespace as well as (hopefully) integrated it down into a re-written else section for the main loop.
+
+A lot of this has been just trying to put together the branch logic and figure out where we branch.  Like skeleton code I suppose where rather than try to get every litte detail in one area I'm trying to just set up where the pathes will go before writing said pathes.
+
