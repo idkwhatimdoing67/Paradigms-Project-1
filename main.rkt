@@ -64,6 +64,24 @@
     ;If first char is whitespace, recursively call eval-expr
     [(char-whitespace? (first chars)) (eval-expr (rest chars) history)]
 
+    ; Math part of conditional, here on is where the math logic steps in
+    [(char-numeric? (first chars)) (parse-number chars '())] ; Start with empty accumulator
+
+    ; History lookup
+    [(char=? (first chars) #/$)
+    ; Let* allows for defining local vars sequentially and using prior results
+        (let* ([num-result (parse-number (rest chars) '())] ; Parse the ID following the '$'
+            [id-val (first num-result)]                     ; The parsed integer ID.
+            [rem-chars (second num-result)])                ; Remaining text after ID
+        
+            (if id-val
+                (list (get-history-val id-val history) rem-chars) ; Fetch from history and return
+                (list #f rem-chars)))] ; Fail if no valid num attached to $
+
+    ; Minus (-)
+    
+
+
     ; Currently return false for non whitespace/empty lists.  Temp build
     [else (list #f chars)]))
 

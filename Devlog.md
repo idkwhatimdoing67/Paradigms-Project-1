@@ -32,3 +32,4 @@ Beginning to fill our main eval function.  Going to add in helpers to parse and 
 Number parser is first.  Then history lookup.
 
 These are built out so now we need to dive back into that main eval logic and go through the calc functionality.
+Big part will be (i think) just going through the first conditional block and adding the actual math stuff like +,-,*,/
