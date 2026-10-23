@@ -35,7 +35,7 @@
     (cond ; Use 'switch' statement to check what user inputted
 
         ; If input is "quit" then return
-        [(string=? input "quit") (void)] ;Void does nothing and stops recursion for program exit
+        [(string=? (string-trim input) "quit") (void)] ;Void does nothing and stops recursion for program exit
 
         [else ;Condition for all other inputs
 
